@@ -10,8 +10,22 @@ GRAYLOGSERVERSGELF
     }
 
     server {
-        listen 12201 udp;
+        listen 12201;
         proxy_pass graylogserversgelf;
+    }
+
+    upstream graylogserverssyslog {
+GRAYLOGSERVERSSYSLOG
+    }
+
+stream {
+    upstream graylogserversgelfudp {
+GRAYLOGSERVERSGELF
+    }
+
+    server {
+        listen 12201 udp;
+        proxy_pass graylogserversgelfudp;
     }
 
     upstream graylogserverssyslog {
