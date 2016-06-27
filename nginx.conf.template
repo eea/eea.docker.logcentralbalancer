@@ -14,10 +14,6 @@ GRAYLOGSERVERSGELF
         proxy_pass graylogserversgelf;
     }
 
-    upstream graylogserverssyslog {
-GRAYLOGSERVERSSYSLOG
-    }
-
     upstream graylogserversgelfudp {
 GRAYLOGSERVERSGELF
     }
