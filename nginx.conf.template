@@ -18,7 +18,6 @@ GRAYLOGSERVERSGELF
 GRAYLOGSERVERSSYSLOG
     }
 
-stream {
     upstream graylogserversgelfudp {
 GRAYLOGSERVERSGELF
     }
