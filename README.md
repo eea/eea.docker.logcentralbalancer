@@ -1,7 +1,7 @@
 # eea.docker.logcentralbalancer
 ### TCP/UDP Nginx balancer for logcentral
 
-based on [nginx:alpine](https://github.com/nginxinc/docker-nginx/tree/master/stable/alpine)
+based on [nginx](https://hub.docker.com/_/nginx/)
 
 ## Prerequisites
 
