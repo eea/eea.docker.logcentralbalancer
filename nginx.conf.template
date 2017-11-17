@@ -11,6 +11,7 @@ GRAYLOGSERVERSGELF
 
     server {
         listen 12201;
+        proxy_timeout 10s;
         proxy_pass graylogserversgelf;
     }
 
@@ -20,6 +21,7 @@ GRAYLOGSERVERSGELF
 
     server {
         listen 12201 udp;
+        proxy_timeout 10s;
         proxy_pass graylogserversgelfudp;
     }
 
@@ -29,6 +31,7 @@ GRAYLOGSERVERSSYSLOG
 
     server {
         listen 1514;
+        proxy_timeout 10s;
         proxy_pass graylogserverssyslog;
     }
 
@@ -38,6 +41,7 @@ GRAYLOGSERVERSSYSLOG
 
     server {
         listen 1514 udp;
+        proxy_timeout 10s;
         proxy_pass graylogserverssyslogudp;
     }
 }
