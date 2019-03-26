@@ -1,10 +1,14 @@
-worker_processes  16;
+worker_processes  auto;
+worker_rlimit_nofile 1000000;
 
 events {
     worker_connections 1048576;
 }
 
 stream {
+
+    tcp_nodelay on;
+
     upstream graylogserversgelf {
 GRAYLOGSERVERSGELF
     }
@@ -21,6 +25,7 @@ GRAYLOGSERVERSGELF
     server {
         listen 12201 udp;
         proxy_timeout 10s;
+        proxy_responses 0; 
         proxy_pass graylogserversgelfudp;
     }
 
@@ -39,6 +44,7 @@ GRAYLOGSERVERSSYSLOG
 
     server {
         listen 1514 udp;
+        proxy_responses 0; 
         proxy_timeout 10s;
         proxy_pass graylogserverssyslogudp;
     }
