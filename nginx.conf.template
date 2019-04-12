@@ -9,43 +9,50 @@ stream {
 
     tcp_nodelay on;
 
-    upstream graylogserversgelf {
-GRAYLOGSERVERSGELF
+
+    resolver RESOLVER_IP ipv6=off valid=RESOLVER_TIMEOUT;
+
+
+    map $remote_addr $upstream1 {
+        default GRAYLOG;
     }
+
 
     server {
         listen 12201;
-        proxy_pass graylogserversgelf;
+        proxy_pass $upstream1:12201;
     }
 
-    upstream graylogserversgelfudp {
-GRAYLOGSERVERSGELF
+    map $remote_addr $upstream2 {
+        default GRAYLOG;
     }
 
     server {
         listen 12201 udp;
         proxy_timeout 1s;
         proxy_responses 0; 
-        proxy_pass graylogserversgelfudp;
+        proxy_pass $upstream2:12201;
     }
 
-    upstream graylogserverssyslog {
-GRAYLOGSERVERSSYSLOG
+    map $remote_addr $upstream3 {
+        default GRAYLOG;
     }
+
 
     server {
         listen 1514;
-        proxy_pass graylogserverssyslog;
+        proxy_pass $upstream3:1514;
     }
 
-    upstream graylogserverssyslogudp {
-GRAYLOGSERVERSSYSLOG
+
+    map $remote_addr $upstream4 {
+        default GRAYLOG;
     }
 
     server {
         listen 1514 udp;
         proxy_responses 0; 
         proxy_timeout 1s;
-        proxy_pass graylogserverssyslogudp;
+        proxy_pass $upstream4:1514;
     }
 }

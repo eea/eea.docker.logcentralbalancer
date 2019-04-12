@@ -4,4 +4,6 @@ MAINTAINER "European Environment Agency (EEA): IDM2 A-Team" <eea-edw-a-team-aler
 COPY nginx.conf.template /tmp/nginx.conf.template
 COPY docker-start.sh /docker-start.sh
 
-CMD /docker-start.sh && nginx -g "daemon off;"
+ENTRYPOINT ["/docker-start.sh"]
+
+CMD ["nginx","-g","daemon off;"]
