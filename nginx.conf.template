@@ -8,51 +8,37 @@ events {
 stream {
 
     tcp_nodelay on;
-
-
     resolver RESOLVER_IP ipv6=off valid=RESOLVER_TIMEOUT;
+  
 
-
-    map $remote_addr $upstream1 {
+    map $remote_addr $upstream {
         default GRAYLOG;
     }
-
 
     server {
         listen 12201;
-        proxy_pass $upstream1:12201;
+        proxy_pass $upstream:12201;
     }
 
-    map $remote_addr $upstream2 {
-        default GRAYLOG;
-    }
 
     server {
         listen 12201 udp;
         proxy_timeout 1s;
         proxy_responses 0; 
-        proxy_pass $upstream2:12201;
-    }
-
-    map $remote_addr $upstream3 {
-        default GRAYLOG;
+        proxy_pass $upstream:12201;
     }
 
 
     server {
         listen 1514;
-        proxy_pass $upstream3:1514;
+        proxy_pass $upstream:1514;
     }
 
-
-    map $remote_addr $upstream4 {
-        default GRAYLOG;
-    }
 
     server {
         listen 1514 udp;
         proxy_responses 0; 
         proxy_timeout 1s;
-        proxy_pass $upstream4:1514;
+        proxy_pass $upstream:1514;
     }
 }
