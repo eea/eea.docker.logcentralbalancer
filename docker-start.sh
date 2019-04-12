@@ -2,7 +2,7 @@
 
 cp /tmp/nginx.conf.template /etc/nginx/nginx.conf
 
-GRAYLOG_HOSTS=${GRAYLOG_HOSTS:-"graylog-client"}
+GRAYLOG_HOST=${GRAYLOG_HOST:-"graylog-client"}
 
 RESOLVER_IP=${RESOLVER_IP:-"169.254.169.250"}
 RESOLVER_TIMEOUT=${RESOLVER_TIMEOUT:-"15s"}
