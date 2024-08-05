@@ -1,4 +1,4 @@
-FROM nginx:1.23-alpine
+FROM nginx:1.27-alpine
 MAINTAINER "European Environment Agency (EEA): IDM2 A-Team" <eea-edw-a-team-alerts@googlegroups.com>
 
 COPY nginx.conf.template /tmp/nginx.conf.template
